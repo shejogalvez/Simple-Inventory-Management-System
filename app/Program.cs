@@ -1,6 +1,7 @@
-﻿while (true)
+﻿Inventory inventory = new ();
+while (true)
 {
-    Console.WriteLine("write instruction:");
+    Console.WriteLine("\nwrite instruction:");
 
     var instruction = Console.ReadLine();
     if (instruction == null)
@@ -9,10 +10,21 @@
         continue;
     }
     instruction = instruction.Trim();
+    string? input;
+    string[] arguments;
     switch (instruction)
     {
     case "add":
-        Console.WriteLine("add not implemented");
+        Console.WriteLine("write name, price and quantity separated by commas:");
+        input = Console.ReadLine();
+        if (input == null)
+        {
+            Console.WriteLine("Write something!!");
+            continue;
+        }
+        arguments = input.Split(",");
+        inventory.AddProduct(arguments[0], arguments[1], arguments[2]);
+        Console.WriteLine("Product added");
         break;
     case "list":
         Console.WriteLine("list not implemented");
