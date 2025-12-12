@@ -45,7 +45,10 @@ while (true)
         else Console.WriteLine($"{name} was not found");
         break;
     case "search":
-        Console.WriteLine("search not implemented");
+        Console.WriteLine("Enter name of the product:");
+        name = Console.ReadLine() ?? "";
+        p = inventory.FindProductByName(name);
+        Console.WriteLine(p is not null ? p.ToString() : "Product not found");
         break;
     case "exit":
         Console.WriteLine("exit not implemented");
