@@ -52,8 +52,7 @@ while (true)
             Console.WriteLine(p is not null ? p.ToString() : "Product not found");
             break;
         case "exit":
-            Console.WriteLine("exit not implemented");
-            break;
+            return 0;
         default:
             Console.WriteLine("unrecognized instruction");
             break;
