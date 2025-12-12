@@ -10,20 +10,13 @@ while (true)
         continue;
     }
     instruction = instruction.Trim();
-    string? input;
-    string[] arguments;
+    Tuple<string, int, int>? arguments;
     switch (instruction)
     {
     case "add":
-        Console.WriteLine("write name, price and quantity separated by commas:");
-        input = Console.ReadLine();
-        if (input == null)
-        {
-            Console.WriteLine("Write something!!");
-            continue;
-        }
-        arguments = input.Split(",");
-        inventory.AddProduct(arguments[0], arguments[1], arguments[2]);
+        arguments = getArgumentsFromUser();
+        if (arguments is null) continue;
+        inventory.AddProduct(arguments.Item1, arguments.Item2, arguments.Item3);
         Console.WriteLine("Product added");
         break;
     case "list":
@@ -47,4 +40,17 @@ while (true)
         break;
 
     };
+}
+
+Tuple<string, int, int>? getArgumentsFromUser()
+{
+    Console.WriteLine("write name, price and quantity separated by commas:");
+    string input = Console.ReadLine() ?? "";
+    string[]? arguments = input.Split(",");
+    if (arguments.Length != 3)
+    {
+        Console.WriteLine("three arguments are expected");
+        return null;
+    }
+    return new Tuple<string, int, int>(arguments[0], int.Parse(arguments[1]), int.Parse(arguments[2]));
 }
