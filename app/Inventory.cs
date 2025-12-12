@@ -8,4 +8,6 @@ class Inventory
     }
     
     public override string ToString() => string.Join("\n", from p in products select p.ToString());
+
+    public Product? FindProductByName(string name) => products.Find(p => p.Name.Equals(name));
 }

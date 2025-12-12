@@ -24,7 +24,18 @@ while (true)
         Console.WriteLine(inventory.ToString());
         break;
     case "edit":
-        Console.WriteLine("edit not implemented");
+        Console.WriteLine("Enter name of the product:");
+        string name = Console.ReadLine() ?? "";
+        Product? p = inventory.FindProductByName(name);
+        if (p is null)
+        {
+            Console.WriteLine("Product not found");
+            continue;
+        }
+        arguments = getArgumentsFromUser();
+        if (arguments is null) continue;
+        p.Update(arguments.Item1, arguments.Item2, arguments.Item3);
+        Console.WriteLine("Product updated");
         break;
     case "delete":
         Console.WriteLine("delete not implemented");
