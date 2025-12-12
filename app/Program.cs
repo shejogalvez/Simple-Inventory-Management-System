@@ -27,7 +27,8 @@ while (true)
         Console.WriteLine("Product added");
         break;
     case "list":
-        Console.WriteLine("list not implemented");
+        Console.WriteLine("Current products:");
+        Console.WriteLine(inventory.ToString());
         break;
     case "edit":
         Console.WriteLine("edit not implemented");

@@ -1,6 +1,8 @@
 class Product
 {
-    public required string Name;
+    public string Name = "";
     public int Price;
     public int Quantity;
+
+    public override string ToString() => $"{Name}: price = {Price}, quantity = {Quantity}";
 }
