@@ -10,4 +10,16 @@ class Inventory
     public override string ToString() => string.Join("\n", from p in products select p.ToString());
 
     public Product? FindProductByName(string name) => products.Find(p => p.Name.Equals(name));
+
+    // List.Remove allow null as input but throws warning anyways??
+    public bool deleteProductByName(string name)
+    {
+        var index = products.FindIndex(p => p.Name.Equals(name));
+        if (index >= 0)
+        {
+            products.RemoveAt(index);
+            return true;
+        }
+        return false;
+    }
 }

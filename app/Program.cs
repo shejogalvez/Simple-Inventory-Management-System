@@ -38,7 +38,11 @@ while (true)
         Console.WriteLine("Product updated");
         break;
     case "delete":
-        Console.WriteLine("delete not implemented");
+        Console.WriteLine("Enter name of the product to delete:");
+        name = Console.ReadLine() ?? "";
+        bool result = inventory.deleteProductByName(name);
+        if (result) Console.WriteLine($"{name} was deleted");
+        else Console.WriteLine($"{name} was not found");
         break;
     case "search":
         Console.WriteLine("search not implemented");
