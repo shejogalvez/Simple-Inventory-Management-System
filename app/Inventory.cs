@@ -1,10 +1,13 @@
 class Inventory
 {
     private readonly List<Product> products = [];
-    public void AddProduct(string name, int price, int quantity)
+    public bool AddProduct(string name, int price, int quantity)
     {
+        if (FindProductByName(name) is not null) return false;
+        
         var p = new Product {Name = name, Price = price, Quantity = quantity};
         products.Add(p);
+        return true;
     }
     
     public override string ToString() => string.Join("\n", from p in products select p.ToString());

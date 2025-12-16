@@ -16,8 +16,9 @@ while (true)
     case "add":
         arguments = getArgumentsFromUser();
         if (arguments is null) continue;
-        inventory.AddProduct(arguments.Item1, arguments.Item2, arguments.Item3);
-        Console.WriteLine("Product added");
+        var res = inventory.AddProduct(arguments.Item1, arguments.Item2, arguments.Item3);
+        if (res) Console.WriteLine("Product added"); 
+        else Console.WriteLine($"Product {arguments.Item1} is already in the inventory");       
         break;
     case "list":
         Console.WriteLine("Current products:");
